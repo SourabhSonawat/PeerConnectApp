@@ -47,9 +47,9 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center my-10  ">
-      <div className="card bg-base-300  shadow-xl w-96  ">
-        <div className="card-body ">
+    <div className="flex justify-center my-10 px-4 sm:px-6 md:px-8">
+      <div className="card bg-base-300 shadow-xl w-full max-w-md">
+        <div className="card-body">
           <h2 className="card-title justify-center">
             {isLoginForm ? "Login" : "Sign Up"}
           </h2>
@@ -106,7 +106,7 @@ const Login = () => {
           <p className="text-red-500">{error}</p>
           <div className="card-actions justify-center m-2">
             <button
-              className="btn btn-outline btn-primary"
+              className="btn btn-outline btn-primary w-full sm:w-auto"
               onClick={isLoginForm ? handleLogin : handleSignUp}
             >
               {isLoginForm ? "Login" : "Sign Up"}
@@ -114,7 +114,7 @@ const Login = () => {
           </div>
 
           <p
-            className="m-auto cursor-pointer py-2"
+            className="m-auto text-center cursor-pointer py-2"
             onClick={() => setIsLoginForm((value) => !value)}
           >
             {isLoginForm
@@ -126,4 +126,5 @@ const Login = () => {
     </div>
   );
 };
+
 export default Login;
