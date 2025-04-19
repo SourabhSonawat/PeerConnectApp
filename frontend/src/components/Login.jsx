@@ -15,6 +15,13 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const isStrongPassword = (password) => {
+    // Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
+    const strongPasswordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/;
+    return strongPasswordRegex.test(password);
+  };
+
   const handleLogin = async () => {
     try {
       const res = await axios.post(
@@ -33,6 +40,12 @@ const Login = () => {
   };
 
   const handleSignUp = async () => {
+    if (!isStrongPassword(password)) {
+      setError(
+        "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character."
+      );
+      return;
+    }
     try {
       const res = await axios.post(
         `${BASE_URL}/signup`,
